@@ -37,7 +37,15 @@ head -n 5 /tmp/php_index.html
 echo "[test] Pruefe MySQL in Container..."
 docker compose exec -T mysql mysql -u"${MYSQL_USER:-appuser}" -p"${MYSQL_PASSWORD:-apppassword}" "${MYSQL_DATABASE:-appdb}" -e "SELECT COUNT(*) AS demo_items_count FROM demo_items;"
 
-echo "[test] Starte Java-Smoke-Test..."
-./scripts/test-java.sh
+# Java-Test nur ausführen, wenn Java-Quellcode vorhanden ist
+shopt -s nullglob
+java_sources=(src/volleyball/*.java)
+shopt -u nullglob
+if [[ ${#java_sources[@]} -gt 0 ]]; then
+  echo "[test] Starte Java-Smoke-Test..."
+  ./scripts/test-java.sh
+else
+  echo "[test] Kein Java-Quellcode gefunden, überspringe Java-Smoke-Test."
+fi
 
 echo "[test] Alle Checks erfolgreich"

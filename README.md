@@ -62,8 +62,7 @@ Data Layer (MySQL - Persistent Storage)
 | [PFLICHTENHEFT.md](docs/handbuch/PFLICHTENHEFT.md) | ⭐ **Systemanforderungen & Spezifikationen** |
 | [ARCHITEKTUR.md](docs/handbuch/ARCHITEKTUR.md) | Technische Architektur & Diagramme |
 | [Handbuch Index](docs/handbuch/INDEX.md) | Übersicht aller Dokumentationen |
-| [README.md](docs/handbuch/README.md) | Quick-Start & Übersicht |
-| [legacy-analysis/README.md](legacy-analysis/README.md) | 🔒 **Legacy-Code Analyse** (Upload & Analyse) |
+| [README.md](docs/handbuch/README.md) | Quick-Start & Übersicht || [anleitungen/live-php-mysql-test.md](docs/handbuch/anleitungen/live-php-mysql-test.md) | Live-Test-Umgebung für PHP/Python/MySQL || [legacy-analysis/README.md](legacy-analysis/README.md) | 🔒 **Legacy-Code Analyse** (Upload & Analyse) |
 
 ---
 

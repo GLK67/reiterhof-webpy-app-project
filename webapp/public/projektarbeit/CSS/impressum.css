@@ -1,0 +1,90 @@
+/* =========================================
+   SPEZIELLES DESIGN FÜR: IMPRESSUM
+   ========================================= */
+
+/* Der Textbereich */
+.impressum-content {
+    margin-top: 30px;
+    line-height: 1.8;
+}
+
+/* Die Zwischenüberschriften (Nutzt die Dark-Mode Variable!) */
+.impressum-subtitle {
+    color: var(--text-heading);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* --- Layout für den Inhaber --- */
+.owner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.owner p {
+    margin: 0;
+}
+
+/* Das Foto des Inhabers */
+.owner-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%; /* Macht das Bild schön rund */
+}
+
+/* Das Foto des Inhabers */
+.coowner-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%; /* Macht das Bild schön rund */
+}
+
+/* Das Foto des Inhabers */
+.cto-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%; /* Macht das Bild schön rund */
+}
+
+/* --- Layout für die Google Maps Karte --- */
+.map-container {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden; /* WICHTIG: Schneidet die eckigen Kanten des iFrames ab, damit die runden Ecken wirken */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Nutzt den Schatten aus dem Dark-Mode! */
+}
+
+.map-iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    display: block;
+}
+
+/* Ein hübscher Text-Link für den Standort */
+.text-link {
+    color: var(--text-heading);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.text-link:hover {
+    color: #d35400; /* Wird Orange beim Drüberfahren */
+    text-decoration: underline;
+}
+
+/* --- Abstände für die Listen im Impressum (z.B. Zitation) --- */
+.impressum-list {
+    padding-left: 20px; /* Rückt die Liste etwas ein */
+}
+
+.impressum-list li {
+    margin-bottom: 10px; /* Sorgt für den schönen Abstand zwischen den einzelnen Punkten */
+}

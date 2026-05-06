@@ -1,0 +1,215 @@
+/* =========================================
+   DER MAGISCHE RESET (Verhindert horizontales Scrollen!)
+   ========================================= */
+* {
+    box-sizing: border-box; /* Zwingt alle Ränder nach innen, nichts sprengt mehr den Bildschirm */
+}
+
+/* =========================================
+   FARBPALETTEN (HELL & DUNKEL MODUS)
+   Hier definieren wir "Variablen". Wenn wir umschalten, tauscht der Browser diese Farben automatisch aus!
+   ========================================= */
+:root {
+    /* Standard: Der helle Natur-Modus */
+    --bg-body: #e8ede5;           /* Pastelliges Wiesen-Grün */
+    --bg-header: #fdfaf5;         /* Warme Creme-Farbe */
+    --bg-container: #ffffff;      /* Strahlendes Weiß */
+    --text-main: #4a4643;         /* Erdiges Dunkelgrau */
+    --text-heading: #1d4e89;      /* Hof-Blau */
+    --shadow-color: rgba(74, 70, 67, 0.12); /* Sanfter, bräunlicher Schatten */
+}
+
+body.dark-mode {
+    /* Wenn aktiv: Der elegante Dark Mode */
+    --bg-body: #1a1c1a;           /* Sehr dunkles Grün/Grau (fast schwarz) */
+    --bg-header: #252725;         /* Etwas helleres Dunkelgrau für den Header */
+    --bg-container: #2c2e2c;      /* Edle, dunkle Boxen statt weiß */
+    --text-main: #808080;         /* Helles Grau für den Text (nicht grelles Weiß, das strengt die Augen an) */
+    --text-heading: #82b1ff;      /* Ein leuchtendes Hellblau für Überschriften, damit es auf Dunkel knallt */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Harter, dunkler Schatten */
+    --bg-hcontainer: #bebebe;     /* Helles Grau für Pferde Boxen oder Aktivitäts Boxen */
+    --acolor: #555555;            /* Farbe für die schrift in den Boxen von zuvor genannt */
+}
+
+/* =========================================
+   GLOBALE STYLES (Gelten für alle Seiten)
+   ========================================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Flexbox sorgt dafür, dass der Footer immer automatisch ganz unten klebt */
+body { 
+    font-family: 'Open Sans', sans-serif; /* Die neue, freundliche Schriftart für normalen Text */
+    color: var(--text-main);              /* Zieht sich die Farbe aus den Variablen oben */
+    background-color: var(--bg-body);     /* Zieht sich den Hintergrund aus den Variablen */
+    line-height: 1.6;
+    display: flex; 
+    flex-direction: column; 
+    transition: background-color 0.4s, color 0.4s; /* Weicher, cooler Überblend-Effekt beim Umschalten! */
+}
+
+/* Alle Überschriften bekommen die traditionelle, hochwertige Serifen-Schrift */
+h1, h2, h3, .logo {
+    font-family: 'Merriweather', serif;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+header { 
+    background: var(--bg-header);         /* Nutzt die Variable (Creme im Hellen, Dunkelgrau im Dunklen) */
+    padding: 10px 0; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Dezenter Schatten nach unten */
+    transition: background-color 0.4s;    /* Weicher Farbübergang */
+}
+
+.nav-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo img { height: 80px; }
+
+nav ul { 
+    list-style: none; 
+    display: flex; 
+    gap: 20px; 
+    align-items: center; /* Sorgt dafür, dass Links und der Button perfekt auf einer Linie liegen */
+}
+
+nav a { 
+    text-decoration: none; 
+    color: var(--text-heading); 
+    font-weight: bold; 
+    font-size: 1.1rem; 
+    font-family: 'Open Sans', sans-serif; /* Navigation braucht klare Schrift */
+    transition: color 0.3s;
+}
+
+nav a:hover, nav a.active { 
+    color: #d35400;                       /* Unser aktives Orange */
+    border-bottom: 2px solid #d35400;     /* Kleine, feine Linie unter dem aktiven Link */
+}
+
+/* --- Der Schalter für den Dark Mode --- */
+#theme-toggle {
+    background: transparent;
+    border: 2px solid var(--text-heading);
+    color: var(--text-heading);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background: var(--text-heading);      /* Kehrt die Farben um beim Drüberfahren */
+    color: var(--bg-header);
+}
+
+/* =========================================
+   ALLGEMEINE KLASSEN & LAYOUT
+   ========================================= */
+.section-title {
+    text-align: center;
+    color: var(--text-heading);
+}
+
+/* Der globale Inhaltskasten */
+.container { 
+    max-width: 1000px; 
+    width: 90%; /* Geändert: Vorher stand hier 50%, was den Kasten zerquetscht hat! */
+    margin: 40px auto auto auto; 
+    padding: 30px; 
+    background: var(--bg-container);      /* Wechselt zwischen Weiß und Anthrazit */
+    border-radius: 10px; 
+    box-shadow: 0 8px 25px var(--shadow-color); 
+    transition: background-color 0.4s, box-shadow 0.4s; /* Weicher Übergang */
+}
+
+/* =========================================
+   GLOBALE FORMULARE (Für Rechner, Reservierung, Admin)
+   ========================================= */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-heading);
+}
+
+.form-group input[type="text"], 
+.form-group input[type="email"], 
+.form-group input[type="number"], 
+.form-group input[type="date"], 
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif; /* Eingabefelder bleiben bewusst sachlich */
+    font-size: 16px;
+    box-sizing: border-box; 
+    /* Anpassung, damit auch die Formulare im Dark Mode gut aussehen */
+    background-color: var(--bg-container);
+    color: var(--text-main);
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: var(--text-heading);
+    outline: none;
+    box-shadow: 0 0 5px var(--text-heading);
+}
+
+/* =========================================
+   DER FOOTER
+   ========================================= */
+footer { 
+    background: #333; /* Bleibt absichtlich immer dunkel */
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    margin-top: auto; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+/* Der Link im Footer (z.B. Impressum) */
+.footer-link {
+    color: #ddd;                 /* Helles Grau, damit es auf dem dunklen Footer gut lesbar ist */
+    text-decoration: none;       /* Entfernt den Unterstrich */
+    transition: color 0.3s;      /* Weicher Übergang beim Hovern */
+}
+
+/* Hover-Effekt für den Footer-Link */
+.footer-link:hover {
+    color: #ffffff;              /* Wird strahlend weiß, wenn die Maus drüberfährt */
+    text-decoration: underline;  /* Zeigt den Unterstrich beim Hovern wieder an */
+}
+
+/* =========================================
+   RESPONSIVES DESIGN (Für Handys)
+   ========================================= */
+@media (max-width: 768px) {
+    .nav-container { flex-direction: column; text-align: center; gap: 10px; }
+    nav ul { flex-direction: column; gap: 15px; padding: 0; margin-bottom: 10px; }
+    .logo img { height: 60px; }
+    .container { width: 95%; padding: 15px; margin-top: 20px; }
+    .form-group[style*="display: flex"], .form-group[style*="display:flex"] { flex-direction: column !important; gap: 15px !important; }
+    table { font-size: 14px; display: block; overflow-x: auto; }
+}

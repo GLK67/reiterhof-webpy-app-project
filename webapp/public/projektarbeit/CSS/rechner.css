@@ -1,0 +1,117 @@
+/* =========================================
+   SPEZIELLES DESIGN FÜR: RECHNER
+   ========================================= */
+
+/* --- Layout für die Checkbox --- */
+.checkbox-label {
+    display: flex;
+    align-items: center;         /* Text und Checkbox auf einer Höhe */
+    gap: 10px;
+    cursor: pointer;
+    font-weight: normal !important;
+}
+
+.checkbox-input {
+    width: 20px !important;      
+    height: 20px !important;
+    margin: 0;
+}
+
+/* --- Die Button-Reihe (Berechnen & Leeren) --- */
+.button-group {
+    display: flex;               /* Legt beide Buttons nebeneinander */
+    gap: 10px;                   /* Abstand zwischen den Buttons */
+    margin-top: 20px;
+}
+
+/* Der blaue Haupt-Button ("Jetzt berechnen") */
+.btn-primary {
+    flex: 3;                     /* Nimmt 3 Teile des Platzes ein (ist also größer) */
+    background-color: #1d4e89;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s; /* Weicher Farbwechsel beim Drüberfahren */
+}
+
+.btn-primary:hover {
+    background-color: #153a66;
+}
+
+/* Der graue Neben-Button ("Leeren") */
+.btn-secondary {
+    flex: 1;                     /* Nimmt 1 Teil des Platzes ein (ist schmaler) */
+    background-color: #ccc;
+    color: #333;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;       /* Entfernt den Link-Strich */
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #bbb;
+}
+
+/* --- Die Box, die nach der Berechnung erscheint --- */
+.ergebnis-box {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e3f2fd;   /* Ein ganz helles, freundliches Blau */
+    border-left: 6px solid #1d4e89; /* Der schicke dicke blaue Balken am linken Rand */
+    border-radius: 4px;
+    
+    /* Magie: Lässt die Box beim Berechnen sanft einfliegen */
+    animation: fadeIn 0.5s ease-out; 
+}
+
+/* Die Anleitung für die Einflug-Animation */
+@keyframes fadeIn {
+    from { 
+        opacity: 0;              /* Startet unsichtbar */
+        transform: translateY(-10px); /* Startet leicht nach oben verschoben */
+    }
+    to { 
+        opacity: 1;              /* Wird voll sichtbar */
+        transform: translateY(0);     /* Rutscht an die Originalposition */
+    }
+}
+
+/* =========================================
+   RESPONSIVES DESIGN (Für Handys)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Buttons auf dem Handy untereinander stapeln, damit man sie besser antippen kann */
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+/* --- Die neu ausgelagerten Klassen (waren vorher Inline-Styles) --- */
+
+/* Der kleine Text unter der Hauptüberschrift */
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Die blaue Überschrift IN der Ergebnis-Box */
+.ergebnis-titel {
+    color: #1d4e89;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Der Button-Link IN der Ergebnis-Box */
+.ergebnis-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+}

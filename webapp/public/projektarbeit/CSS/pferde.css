@@ -1,0 +1,56 @@
+/* =========================================
+   SPEZIELLES DESIGN FÜR: PFERDE
+   ========================================= */
+
+/* Das Layout-Raster (Grid) für alle Pferde-Karten */
+.horse-grid {
+    display: grid;
+    /* Macht die Spalten flexibel: Mindestens 250px breit, füllt sonst den Rest auf. 
+       Bricht auf dem Handy automatisch um! */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;              /* 30px Abstand zwischen allen Karten */
+    margin-top: 30px;       /* Abstand nach oben zur Überschrift */
+}
+
+/* Die einzelne "Karte", in der ein Pferd dargestellt wird */
+.horse-card {
+    background: var(--bg-hcontainer);       /* Weißer Hintergrund für die Text-Box unten */
+    border-radius: 8px;     /* Abgerundete Ecken */
+    overflow: hidden;       /* WICHTIG: Verhindert, dass das Bild beim Zoomen über die runden Ecken ragt */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Leichter, edler Schatten */
+    text-align: center;     /* Zentriert den Text (Name & Beschreibung) in der Karte */
+}
+
+/* Das Aussehen der Pferdebilder */
+.horse-img {
+    width: 100%;            /* Bild füllt die Karte in der Breite immer zu 100% aus */
+    height: 250px;          /* Einheitliche Höhe für alle Bilder, damit das Raster ordentlich aussieht */
+    object-fit: cover;      /* Verhindert, dass Bilder gequetscht werden (schneidet sie perfekt zu) */
+    display: block;         
+    
+    /* Hover-Effekt (Ersetzt dein altes JavaScript!) */
+    cursor: zoom-in;            /* Zeigt eine Lupe als Mauszeiger */
+    transition: transform 0.3s; /* Lässt den Zoom sanft ablaufen */
+}
+
+/* Was passiert, wenn man mit der Maus über das Pferdebild fährt */
+.horse-img:hover {
+    transform: scale(1.05); /* Vergrößert das Bild minimal (Zoom-Effekt) */
+}
+
+/* Der Container für Name und Beschreibungstext UNTER dem Bild */
+.horse-card .info {
+    padding: 15px;          /* Sorgt dafür, dass der Text nicht direkt am Rand der Box klebt */
+}
+
+/* Der Name des Pferdes (h3) */
+.horse-card h3 {
+    color: #1d4e89;         /* Hof-Blau */
+    margin: 0 0 10px 0;     /* Nur Abstand nach unten (10px), sonst null */
+}
+
+/* Der Beschreibungstext des Pferdes (p) */
+.horse-card p {
+    margin: 0;              
+    color: var(--acolor);            /* Ein weiches Dunkelgrau (sieht eleganter aus als hartes Schwarz) */
+}

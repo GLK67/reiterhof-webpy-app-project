@@ -50,6 +50,7 @@ ls routinen/langfristig/        # Jährlich/Strategisch
 
 ### 🧪 Live-Tests & Anleitungen
 - **[anleitungen/java-live-test.md](anleitungen/java-live-test.md)** - Java-App testen: Headless-Test im Codespace & GUI lokal starten
+- **[anleitungen/live-php-mysql-test.md](anleitungen/live-php-mysql-test.md)** - Live-Test-Umgebung für PHP, Python & MySQL
 
 ### 🔧 Grundlagen & Setup
 - **[PFLICHTENHEFT.md](PFLICHTENHEFT.md)** - Alles über das System & Anforderungen

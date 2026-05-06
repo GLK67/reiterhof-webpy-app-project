@@ -1,0 +1,112 @@
+/* =========================================
+   SPEZIELLES DESIGN FÜR: RESERVIERUNG
+   ========================================= */
+
+/* --- Die Zimmer-Bilder oben --- */
+.room-list {
+    display: flex;               /* Legt die 3 Zimmer nebeneinander */
+    gap: 20px;                   /* Abstand zwischen den Zimmern */
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.room {
+    text-align: center;
+    flex: 1;                     /* Alle Zimmerkästchen werden exakt gleich breit */
+}
+
+.room img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;           /* Verhindert Verzerrung der Bilder */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.room h3 {
+    color: #1d4e89;
+    margin: 0 0 5px 0;
+}
+
+/* --- Formular-Spezialitäten --- */
+
+/* Legt Anreise und Abreise nebeneinander */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-col {
+    flex: 1; /* Beide Datumsfelder nehmen 50% des Platzes ein */
+}
+
+/* Formular-Felder, die man nicht bearbeiten darf (readonly), werden automatisch grau */
+input[readonly] {
+    background-color: #f5f5f5;
+    color: #777;
+    cursor: not-allowed;         /* Mauszeiger zeigt an, dass man hier nicht klicken kann */
+}
+
+/* Layout für die Checkbox (Reitunterricht) */
+.checkbox-label {
+    display: flex;
+    align-items: center;         /* Text und Checkbox exakt auf einer Höhe */
+    gap: 10px;
+    cursor: pointer;
+    font-weight: normal !important; /* Überschreibt das fette Design der normalen Labels */
+}
+
+.checkbox-input {
+    width: 20px !important;      /* Macht die kleine Checkbox etwas größer */
+    height: 20px !important;
+    margin: 0;
+}
+
+/* Der große, blaue "Jetzt anfragen" Button */
+.submit-btn {
+    width: 100%;                 /* Button füllt den gesamten Kasten aus */
+    background-color: #1d4e89;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s; /* Weicher Farbwechsel beim Drüberfahren */
+}
+
+.submit-btn:hover {
+    background: #153a66;         /* Dunkleres Blau beim Hovern */
+}
+
+/* --- Erfolgs- & Fehlermeldungen --- */
+.msg-success {
+    color: green;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.msg-error {
+    color: red;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================================
+   RESPONSIVES DESIGN (Für Handys)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Zimmer untereinander stapeln */
+    .room-list {
+        flex-direction: column;
+    }
+    
+    /* Datumsfelder (Anreise/Abreise) untereinander stapeln */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

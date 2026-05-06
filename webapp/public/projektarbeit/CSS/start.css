@@ -1,0 +1,160 @@
+/* =========================================
+   SPEZIELLES DESIGN FÜR DIE STARTSEITE
+   ========================================= */
+
+/* --- Hero Bereich (Das große Willkommensbild ganz oben) --- */
+.hero {
+    /* Setzt das Hintergrundbild und legt einen halbtransparenten, schwarzen Schleier (rgba) darüber, damit der weiße Text besser lesbar ist */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../Bilder/Startseite/Start.jpg');
+    background-size: cover;        /* Zwingt das Bild, den kompletten Kasten auszufüllen */
+    background-position: center;   /* Zentriert das Hintergrundbild */
+    height: 500px;                 /* Gibt dem Kasten eine feste Höhe auf dem PC */
+    display: flex;                 /* Aktiviert Flexbox, um den Text im Bild zu zentrieren */
+    align-items: center;           /* Zentriert den Text von oben nach unten (vertikal) */
+    justify-content: center;       /* Zentriert den Text von links nach rechts (horizontal) */
+    color: white;                  /* Schriftfarbe für alles in diesem Kasten ist Weiß */
+    text-align: center;            /* Zentriert den Text in sich selbst */
+}
+
+/* Die Hauptüberschrift (H1) im Willkommensbild */
+.hero h1 { 
+    font-size: 3rem;               /* Macht die Schrift schön groß */
+    margin-bottom: 10px;           /* Schafft etwas Abstand zum Text darunter */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Wirft einen dunklen Schatten hinter den Text, um ihn noch besser lesbar zu machen */
+}
+
+/* Der Button "Jetzt Urlaub buchen" */
+.btn { 
+    background: #1d4e89;           /* Die blaue Hausfarbe des Reiterhofs */
+    color: white;                  /* Weiße Schrift auf blauem Grund */
+    padding: 10px 20px;            /* Innenabstand (oben/unten 10px, links/rechts 20px) macht den Button füllig */
+    text-decoration: none;         /* Verhindert, dass der Link wie normaler Text unterstrichen wird */
+    border-radius: 5px;            /* Rundet die Ecken des Buttons leicht ab */
+    margin-top: 20px;              /* Schiebt den Button etwas vom Text darüber weg */
+    display: inline-block;         /* Erlaubt dem Link, wie ein Block (Button) behandelt zu werden */
+}
+
+/* --- "Über uns" Bereich --- */
+/* Dies ersetzt deine alten HTML-Styles! Steuert die zwei Bilder nebeneinander. */
+.about-images {
+    display: flex;                 /* Legt die beiden Bilder nebeneinander in eine Reihe */
+    gap: 20px;                     /* Schafft eine exakte Lücke von 20 Pixeln zwischen den Bildern */
+    margin-top: 30px;              /* Abstand zum Text über den Bildern */
+    justify-content: center;       /* Schiebt beide Bilder exakt in die Mitte der Seite */
+}
+
+/* Bestimmt das Aussehen der einzelnen Bilder im "Über uns" Bereich */
+.about-images img {
+    width: 300px;                  /* Fixiert die Breite beider Bilder auf 300 Pixel, damit sie gleich groß sind */
+    border-radius: 8px;            /* Schöne abgerundete Ecken */
+}
+
+/* --- Bildergalerie (Das Bento-Box/Mosaik Layout) --- */
+/* Das ist der Hauptkasten, in dem alle Galerie-Bilder liegen */
+.hof-galerie {
+    display: grid;                 /* Aktiviert das CSS-Grid (Raster-System), perfekt für Galerien */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Sagt dem Browser: Mach die Spalten so breit wie möglich, aber mindestens 250px */
+    grid-auto-rows: 250px;         /* Erzwingt, dass JEDE Kachel standardmäßig exakt 250px hoch ist */
+    grid-auto-flow: dense;         /* Magie: Füllt leere Lücken im Puzzle automatisch mit passenden Bildern auf! */
+    gap: 20px;                     /* Abstand zwischen allen Kacheln */
+    margin-top: 30px;              /* Abstand nach oben zum Titel */
+}
+
+/* Der unsichtbare Rahmen um jedes einzelne Bild in der Galerie */
+.galerie-item {
+    overflow: hidden;              /* WICHTIG: Schneidet alles ab, was über den Rand hinausgeht (verhindert, dass das Bild beim Hovern aus der Box ragt) */
+    border-radius: 8px;            /* Abgerundete Ecken für die Kacheln */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Ein ganz leichter, edler Schatten unter jeder Kachel */
+}
+
+/* Das eigentliche Bild innerhalb der Kachel */
+.galerie-item img {
+    width: 100%;                   /* Das Bild muss die Kachel in der Breite komplett ausfüllen */
+    height: 100%;                  /* Das Bild muss die Kachel in der Höhe komplett ausfüllen */
+    object-fit: cover;             /* Profi-Befehl: Zoomt das Bild so zurecht, dass es die Box füllt, OHNE es zu quetschen oder zu verzerren */
+    display: block;                /* Entfernt den unsichtbaren Abstand, den Bilder manchmal unten haben */
+}
+
+/* Macht die gesamte Kachel anklickbar, nicht nur das Bild selbst */
+.galerie-item a {
+    display: block;                /* Füllt den Raum komplett aus */
+    width: 100%;
+    height: 100%;
+}
+
+/* Hover-Effekt (Dieser Code ersetzt deine alten Javascript "onmouseover" Befehle!) */
+.zoom-img {
+    cursor: zoom-in;               /* Ändert den Mauszeiger in eine Lupe, um zu zeigen, dass man klicken kann */
+    transition: transform 0.3s;    /* Sorgt dafür, dass der Zoom weich in 0.3 Sekunden abläuft und nicht ruckelt */
+}
+
+/* Was passiert, wenn die Maus über das Bild fährt (:hover) */
+.zoom-img:hover {
+    transform: scale(1.05);        /* Vergrößert das Bild auf 105% (Das erzeugt den Zoom-Effekt) */
+}
+
+/* --- Die Spezial-Klassen für große Bilder im Mosaik --- */
+/* Diese Regeln greifen NUR, wenn der Bildschirm mindestens 768px breit ist (also auf Tablets und PCs) */
+@media (min-width: 768px) {
+    .hof-galerie {
+        grid-template-columns: repeat(3, 1fr); /* Erzwingt auf großen Bildschirmen exakt 3 gleich große Spalten */
+    }
+    
+    /* Zieht ein Bild über 2 Spalten und 2 Reihen (großes Quadrat) */
+    .gross {
+        grid-column: span 2; 
+        grid-row: span 2;    
+    }
+    
+    /* Zieht ein Bild über 2 Reihen nach unten (Hochformat) */
+    .hoch {
+        grid-row: span 2;    
+    }
+    
+    /* Zieht ein Bild über 2 Spalten nach rechts (Querformat) */
+    .breit {
+        grid-column: span 2; 
+    }
+}
+
+/* =========================================
+   RESPONSIVES DESIGN STARTSEITE (Für Handys)
+   ========================================= */
+/* Diese Regeln greifen NUR, wenn der Bildschirm schmaler als 768px ist (Handys) */
+@media (max-width: 768px) {
+    
+    /* 1. Den großen Hero-Bereich auf kleinen Bildschirmen anpassen */
+    .hero {
+        height: 350px;             /* Reduziert die Höhe, damit man auf dem Handy nicht endlos scrollen muss */
+        padding: 0 15px;           /* Gibt dem Text links und rechts etwas Abstand zum Bildschirmrand */
+        max-width: 100%;
+    }
+    
+    /* Macht die große Überschrift auf dem Handy etwas kleiner */
+    .hero h1 {
+        font-size: 2rem; 
+    }
+
+    /* 2. Die "Über uns" Bilder fürs Handy umbauen */
+    .about-images {
+        flex-direction: column;    /* Stapelt die beiden Bilder untereinander statt nebeneinander */
+        align-items: center;       /* Zentriert die gestapelten Bilder in der Mitte */
+    }
+    
+    /* Passt die Größe der gestapelten Bilder an */
+    .about-images img {
+        width: 100%;               /* Erlaubt dem Bild, sich der Breite des Handys anzupassen */
+        max-width: 350px;          /* Verhindert aber, dass das Bild riesig wird, wenn das Handy quer gehalten wird */
+    }
+}
+/* =========================================
+   ALLGEMEINES LAYOUT & FORMULARE (Der weiße Inhaltskasten)
+   ========================================= */
+
+/* Der Hauptcontainer (Der weiße Kasten in der Mitte der Seite) */
+.container p {
+    max-width: 750px;           /* Der Text wird maximal 750px breit (perfekt für das Auge) */
+    margin: 0 auto 20px auto;   /* Zentriert den Textblock genau in der Mitte des weißen Kastens */
+    font-size: 1.1rem;          /* Macht die Schrift einen Hauch größer und besser lesbar */
+    line-height: 1.8;           /* Etwas mehr Luft zwischen den Zeilen wirkt eleganter */
+}

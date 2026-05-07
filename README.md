@@ -1,10 +1,55 @@
+# Reiterhof WebPy App Project
+
+**Eine moderne Webanwendung für den Reiterhof** mit Full-Stack-Technologien, professioneller Dokumentation und Best Practices.
+
+> Für schulische und kommerzielle Informatik-Projekte
+
+## 📖 Projektbeschreibung
+
+Diese Webanwendung präsentiert einen Reiterhof mit Informationen zu Pferden, Aktivitäten, Zimmern und Reservierungen. Features umfassen:
+- Responsive Design für mobile und Desktop-Geräte
+- Pferde-Galerie mit Lightbox
+- Rechner für Preise
+- Kontaktformulare
+- Algorithmen-Implementierungen (Bubble-Sort, lineare Suche)
+
+## 🖼️ Screenshot
+
+![Reiterhof Startseite](webapp/public/bilder/Startseite/Start.jpg)
+
+## 🚀 Laufzeitanleitung
+
+### Lokale Entwicklung
+1. Repository klonen:
+   ```bash
+   git clone https://github.com/GLK67/reiterhof-webpy-app-project.git
+   cd reiterhof-webpy-app-project
+   ```
+
+2. Abhängigkeiten installieren:
+   ```bash
+   bash scripts/bootstrap.sh
+   ```
+
+3. Services starten:
+   ```bash
+   bash scripts/start-services.sh
+   ```
+
+4. Webapp öffnen: http://localhost (oder entsprechender Port)
+
+### Docker-Deployment
+```bash
+docker-compose up --build
+```
+
+---
+
 # Universal WebPy App Project Template
 
 **Eine produktionsreife Vorlage für moderne Webanwendungen** mit Full-Stack-Technologien, professioneller Dokumentation und Best Practices.
 
 > Für schulische und kommerzielle Informatik-Projekte
-
----
 
 ## 📋 Systemanforderungen (Pflichtenheft)
 

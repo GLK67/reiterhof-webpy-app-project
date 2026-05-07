@@ -1,55 +1,63 @@
-<?php
-$mysqlHost = getenv('MYSQL_HOST') ?: 'mysql';
-$mysqlPort = getenv('MYSQL_PORT') ?: '3306';
-$mysqlDb = getenv('MYSQL_DATABASE') ?: 'appdb';
-$mysqlUser = getenv('MYSQL_USER') ?: 'appuser';
-$mysqlPass = getenv('MYSQL_PASSWORD') ?: 'apppassword';
-$pythonApiUrl = getenv('PYTHON_API_URL') ?: 'http://localhost:8000';
-
-$mysqlMessage = 'Nicht getestet';
-
-try {
-    $mysqli = @new mysqli($mysqlHost, $mysqlUser, $mysqlPass, $mysqlDb, (int)$mysqlPort);
-    if ($mysqli->connect_error) {
-        $mysqlMessage = 'Fehler: ' . $mysqli->connect_error;
-    } else {
-        $result = $mysqli->query('SELECT COUNT(*) AS cnt FROM demo_items');
-        $row = $result ? $result->fetch_assoc() : ['cnt' => 'n/a'];
-        $mysqlMessage = 'OK, demo_items=' . $row['cnt'];
-        $mysqli->close();
-    }
-} catch (Throwable $e) {
-    $mysqlMessage = 'Exception: ' . $e->getMessage();
-}
+<?php 
+// Bindet den Kopf der Seite (inkl. Navigation und globaler CSS) ein
+include 'layouts/header.php'; 
 ?>
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>edu-code Live-Test Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main class="container">
-      <h1>Live-Test Dashboard</h1>
-      <p>Diese Seite prueft PHP, JavaScript, Python-API und MySQL in einer gemeinsamen Testumgebung.</p>
 
-      <section class="card">
-        <h2>PHP -> MySQL</h2>
-        <p id="phpMysqlStatus"><?php echo htmlspecialchars($mysqlMessage, ENT_QUOTES, 'UTF-8'); ?></p>
-      </section>
+<section class="hero">
+    <div>
+        <h1>Willkommen auf dem Reiterhof Hufeisen</h1>
+        <p>Erlebe unvergessliche Ferien im Sattel.</p>
+        <a href="reservierung.php" class="btn">Jetzt Urlaub buchen</a>
+    </div>
+</section>
 
-      <section class="card">
-        <h2>JavaScript -> Python-API</h2>
-        <button id="refreshBtn">Status laden</button>
-        <pre id="apiOutput">Noch kein API-Call ausgefuehrt.</pre>
-      </section>
-    </main>
+<div class="container">
+    <h2>Über uns</h2>
+    <p>Unser Hof liegt inmitten grüner Wiesen und bietet Erholung für die ganze Familie. Seit über 30 Jahren kümmern wir uns mit Herzblut um Pferd und Reiter.</p>
+    
+    <div class="about-images">
+        <img src="Bilder/Startseite/Hofansicht.jpg" alt="Hofansicht">
+        <img src="Bilder/Startseite/Reitunterricht.jpg" alt="Reitunterricht">
+    </div>
+</div>
 
-    <script>
-      window.PYTHON_API_URL = <?php echo json_encode($pythonApiUrl, JSON_UNESCAPED_SLASHES); ?>;
-    </script>
-    <script src="app.js"></script>
-  </body>
-</html>
+<?php
+// Array für die Hof-Galerie. 
+// Die Klassen 'gross', 'hoch' usw. bestimmen später im CSS, wie viele Spalten/Zeilen das Bild im Raster einnimmt.
+$galerieBilder = [
+    ["src" => "Bilder/Startseite/Pferde_koppel.jpg", "alt" => "Pferde auf der Koppel", "klasse" => "gross"], // Verbraucht 4 Plätze im Grid
+    ["src" => "Bilder/Startseite/Kinderreiten.jpg", "alt" => "Kind beim Reiten", "klasse" => ""],          // Verbraucht 1 Platz
+    ["src" => "Bilder/Startseite/Waldweg.jpg", "alt" => "Waldweg", "klasse" => "hoch"],                    // Verbraucht 2 Plätze
+    ["src" => "Bilder/Startseite/Reitausrüstung.jpg", "alt" => "Reitausrüstung", "klasse" => ""],          // Verbraucht 1 Platz
+    ["src" => "Bilder/Startseite/Stall_abend.jpg", "alt" => "Der Stall am Abend", "klasse" => ""]          // Verbraucht 1 Platz
+];
+?>
+
+<div class="container">
+    <h2 class="section-title">Unser Hofleben in Bildern</h2>
+    
+    <div class="hof-galerie">
+        <?php foreach ($galerieBilder as $index => $bild): ?>
+            <div class="galerie-item <?php echo $bild['klasse']; ?>">
+                <a href="#hofbild-<?php echo $index; ?>">
+                    <img src="<?php echo $bild['src']; ?>" alt="<?php echo $bild['alt']; ?>" class="zoom-img">
+                </a>
+            </div>
+
+            <div id="hofbild-<?php echo $index; ?>" class="lightbox">
+                <a href="#!" class="lightbox-close"></a>
+                
+                <div class="lightbox-content">
+                    <img src="<?php echo $bild['src']; ?>" alt="<?php echo $bild['alt']; ?>">
+                    <h2 class="lightbox-title"><?php echo $bild['alt']; ?></h2>
+                    <a href="#!" class="btn-schliessen">Schließen (X)</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<?php 
+// Bindet den Fuß der Seite ein
+include 'layouts/footer.php'; 
+?>
